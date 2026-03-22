@@ -56,7 +56,13 @@ Google Sheets를 백엔드로 사용하는 예약 시스템을 구축합니다.
 
 ```bash
 git clone https://github.com/hooNpk/my-skill.git
-cp -r my-skill/cloudflare-pages-deploy your-project/.claude/skills/
+
+# webpage 카테고리의 스킬을 프로젝트에 복사
+cp -r my-skill/webpage/cloudflare-pages-deploy your-project/.claude/skills/
+cp -r my-skill/webpage/google-sheets-reservation-system your-project/.claude/skills/
+
+# 또는 webpage 스킬 전체 복사
+cp -r my-skill/webpage/*/ your-project/.claude/skills/
 ```
 
 ## 디렉토리 구조
@@ -64,14 +70,15 @@ cp -r my-skill/cloudflare-pages-deploy your-project/.claude/skills/
 ```
 my-skill/
 ├── README.md
-├── cloudflare-pages-deploy/
-│   └── SKILL.md
-├── google-sheets-reservation-system/
-│   ├── SKILL.md
-│   └── references/
-│       └── apps-script.md
-├── web-image-crawler/
-│   └── SKILL.md
-└── gallery-board/
-    └── SKILL.md
+└── webpage/                                ← 웹페이지 개발/배포 관련 스킬
+    ├── cloudflare-pages-deploy/
+    │   └── SKILL.md
+    ├── google-sheets-reservation-system/
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── apps-script.md
+    ├── web-image-crawler/
+    │   └── SKILL.md
+    └── gallery-board/
+        └── SKILL.md
 ```
