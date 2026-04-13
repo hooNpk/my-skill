@@ -5,6 +5,27 @@ Claude Code에서 사용할 수 있는 커스텀 스킬 모음입니다.
 
 ## Skills
 
+### weekly-retro
+
+음성 녹음 파일을 STT로 변환하고 Claude가 주간 회고 마크다운으로 정리하여 Obsidian에 저장합니다.
+
+- **트리거**: `/weekly-retro <오디오파일경로>`
+- **기능**:
+  - STT 실행 → 알려진 오류 교정 → 회고 마크다운 생성 → Obsidian 저장
+  - 섹션 구성: Weekly Summary / Activity Log / Networking & Insights / 운동·건강
+  - 파일명 자동 결정: 직전 주 ISO 주차 기준 (`YYYY-W{주차}.md`)
+
+### hand-data (clip-video)
+
+MD 파일에 정의된 시간대 기준으로 MP4를 소리 없이 잘라 `clipped_video` 폴더에 저장합니다.
+
+- **트리거**: `/clip-video <비디오폴더경로>`
+- **기능**:
+  - MD 파일 파싱 (`- {시작} ~ {종료}, {파일명}` 형식)
+  - ffmpeg 자동 탐색 (상위 폴더)
+  - `-c:v copy` 고속 복사 / 실패 시 재인코딩 자동 전환
+  - 오디오 제거 (`-an`)
+
 ### 1. cloudflare-pages-deploy
 
 Cloudflare Pages에 정적 웹사이트를 배포합니다.
@@ -70,6 +91,12 @@ cp -r my-skill/webpage/*/ your-project/.claude/skills/
 ```
 my-skill/
 ├── README.md
+├── weekly-retro/                           ← 주간 회고 자동화
+│   ├── SKILL.md
+│   └── README.md
+├── hand-data/                              ← 영상 클립 자동화 (clip-video)
+│   ├── SKILL.md
+│   └── README.md
 └── webpage/                                ← 웹페이지 개발/배포 관련 스킬
     ├── cloudflare-pages-deploy/
     │   └── SKILL.md
